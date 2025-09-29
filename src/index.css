@@ -1,0 +1,13 @@
+@import "https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap";
+@import "tailwindcss";
+
+body {
+  font-family: "Satoshi", sans-serif;
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a0b2e 100%);
+  min-height: 100vh;
+  color: white;
+}
+
+.search-input:focus {
+  outline: none;
+}
