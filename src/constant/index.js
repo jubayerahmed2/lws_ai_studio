@@ -1,4 +1,3 @@
-export const models = ["flux", "kontext", "turbo", "nanobanana"];
 export const aspectRatios = [
   {
     ratio: "1:1",
