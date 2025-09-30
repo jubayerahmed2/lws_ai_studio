@@ -13,12 +13,18 @@ const ImageCard = ({ img, downloaded }) => {
 
   return (
     <div className="image-card rounded-xl overflow-hidden cursor-pointer relative">
-      {!downloaded && (
+      {!downloaded && img.status <= 200 && (
         <div className="absolute bottom-2 right-2  p-1 ">
           <DownloadIcon onClick={handleDownload} />
         </div>
       )}
-      <img src={img.url} className="w-full h-48 object-cover " download />
+      {img.status > 200 ? (
+        <div className="w-full h-48 flex justify-center items-center text-2xl font-bold bg-black/50">
+          Failed to load
+        </div>
+      ) : (
+        <img src={img.url} className="w-full h-48 object-cover " download />
+      )}
     </div>
   );
 };

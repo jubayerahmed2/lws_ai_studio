@@ -1,25 +1,20 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import InputBox from "../../../components/InputBox";
 import Button from "../../../components/ui/Button";
 import Input from "../../../components/ui/Input";
 import Option from "../../../components/ui/Option";
 import Select from "../../../components/ui/Select";
 import { aspectRatios } from "../../../constant";
-import { ImageContext } from "../../../contexts";
+import { CustomizedImageContext } from "../../../contexts";
 import useQuery from "../../../hooks/useQuery";
 import PromptField from "./PromptField";
 
 const SettingsPanel = () => {
   const { data: models } = useQuery([], "https://image.pollinations.ai/models");
 
-  const [configuration, setConfiguration] = useState({
-    prompt: "",
-    model: models && models[0],
-    width: 1024,
-    height: 1024,
-  });
-
-  const { handleGenerateImage, loading } = useContext(ImageContext);
+  const { configuration, setConfiguration } = useContext(
+    CustomizedImageContext
+  );
 
   const selectedRatioIdx = aspectRatios.findIndex(
     (ratio) =>
@@ -29,17 +24,7 @@ const SettingsPanel = () => {
 
   return (
     <>
-      <PromptField
-        prompt={configuration.prompt}
-        onChange={(e) => {
-          setConfiguration((prev) => ({
-            ...prev,
-            prompt: e.target.value,
-          }));
-        }}
-        disabled={loading}
-        onGenerateImage={() => handleGenerateImage(configuration)}
-      />
+      <PromptField />
 
       <div className="border border-zinc-700/70 mb-6 rounded-lg p-4 mt-18">
         <div className="flex items-center justify-between mb-4">
