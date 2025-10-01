@@ -23,7 +23,7 @@ const ImageProvider = ({ children }) => {
 
       for (let r = 0; r < 9; r++) {
         const request = fetch(
-          `https://image.pollinations.ai/prompt/${prompt}&width=${width}&hight=${height}&seed=${crypto.randomUUID()}&model=${model}`
+          `https://image.pollinations.ai/prompt/${prompt}?width=${width}&height=${height}&seed=${crypto.randomUUID()}&model=${model}`
         );
         requests.push(request);
       }
